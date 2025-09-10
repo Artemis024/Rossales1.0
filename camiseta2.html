@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camiseta Negra - Minimal Tees</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #121212;
+      color: #E0E0E0;
+    }
+    header {
+      background-color: #1E1E1E;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      font-weight: 700;
+      font-size: 1.9rem;
+    }
+    nav a {
+      color: #E0E0E0;
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+    }
+    nav a:hover {
+      color: #FF4C29;
+    }
+    .filtros {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1rem;
+      background-color: #1E1E1E;
+    }
+    .filtros input, .filtros select {
+      padding: 0.5rem;
+      border: none;
+      border-radius: 4px;
+      font-family: inherit;
+    }
+    .productos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+    }
+    .producto {
+      background-color: #1E1E1E;
+      border-radius: 8px;
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+    .producto:hover {
+      transform: translateY(-5px);
+    }
+    .producto img {
+      width: 100%;
+      height: auto;
+    }
+    .producto h2 {
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+    }
+    .precio {
+      color: #FF4C29;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .btn-comprar {
+      background-color: #FF4C29;
+      color: #fff;
+      border: none;
+      padding: 0.7rem 1.2rem;
+      margin-bottom: 1rem;
+      cursor: pointer;
+      font-weight: 500;
+      border-radius: 4px;
+      transition: background-color 0.2s ease;
+    }
+    .btn-comprar:hover {
+      background-color: #e04324;
+    }
+    .carrito {
+      background-color: #1E1E1E;
+      padding: 1rem;
+      margin: 1rem;
+      border-radius: 8px;
+    }
+    footer {
+      background-color: #1E1E1E;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #888;
+    }
+  </style>
+  <style>
+    /* ====== ESTILOS DE LA PÁGINA DE DETALLE ====== */
+    main {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    .detalle-producto {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+    .detalle-producto img {
+      max-width: 350px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    }
+    .info {
+      flex: 1;
+    }
+    .seccion {
+      background-color: #1E1E1E;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      margin-top: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+    .seccion h3 {
+      color: #FF4C29;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.2rem;
+    }
+    .seccion ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .seccion ul li {
+      padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .seccion ul li:last-child {
+      border-bottom: none;
+    }
+    .icono {
+      color: #FF4C29;
+      font-size: 1.1rem;
+    }
+    .btn-comprar {
+      background-color: #FF4C29;
+      color: #fff;
+      border: none;
+      padding: 0.7rem 1.2rem;
+      margin-top: 1rem;
+      cursor: pointer;
+      font-weight: 500;
+      border-radius: 4px;
+      transition: background-color 0.2s ease;
+    }
+    .btn-comprar:hover {
+      background-color: #e04324;
+    }
+    /* ====== ESTILOS DEL CARRITO ====== */
+    .carrito {
+      background-color: #1E1E1E;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 2rem auto;
+      max-width: 400px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    }
+    .carrito h2 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: #FF4C29;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .carrito ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .carrito li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.9rem;
+    }
+    .carrito li:last-child {
+      border-bottom: none;
+    }
+    .carrito input[type="number"] {
+      width: 50px;
+      padding: 0.2rem;
+      background-color: #2A2A2A;
+      border: none;
+      border-radius: 4px;
+      color: #E0E0E0;
+      text-align: center;
+    }
+    .carrito button {
+      background: none;
+      border: none;
+      color: #FF4C29;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .carrito .btn-comprar {
+      display: inline-block;
+      text-decoration: none;
+    }
+    .carrito p {
+      margin-top: 0.5rem;
+      font-weight: bold;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ROSSALES Tees</h1>
+    <nav>
+      <a href="PAGINA1.html">Inicio</a>
+      <a href="#">Catálogo</a>
+      <a href="#">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Producto -->
+    <div class="detalle-producto producto">
+      <img src="img/camiseta2.jpg" alt="Camiseta Gris">
+      <div class="info">
+        <h2>Camiseta Gris</h2>
+        <p>Esta camiseta negra minimalista está confeccionada con algodón 100% orgánico, suave al tacto y resistente al uso diario. Corte unisex y costuras reforzadas para mayor durabilidad.</p>
+        <p class="precio" data-precio="15">$15.00</p>
+        <button class="btn-comprar">Agregar al carrito</button>
+      </div>
+    </div>
+
+    <!-- Características -->
+    <div class="seccion">
+      <a href="PAGINA1.html" class="btn-atras">⬅ Volver a inicio</a>
+      <h3>Características</h3>
+      <ul>
+        <li><span class="icono">✔</span> Material: Algodón orgánico</li>
+        <li><span class="icono">✔</span> Colores disponibles: Negro, Gris</li>
+        <li><span class="icono">✔</span> Tallas: S, M, L, XL</li>
+        <li><span class="icono">✔</span> Lavado a máquina, no usar cloro</li>
+      </ul>
+    </div>
+
+    <!-- Formas de pago -->
+    <div class="seccion">
+      <h3>💳 Formas de pago</h3>
+      <ul>
+        <li><span class="icono">💳</span> Tarjeta de crédito/débito</li>
+        <li><span class="icono">💲</span> PayPal</li>
+        <li><span class="icono">🏦</span> Transferencia bancaria</li>
+        <li><span class="icono">📦</span> Pago contra entrega (zonas seleccionadas)</li>
+      </ul>
+    </div>
+
+    <!-- Carrito -->
+    <div class="carrito">
+      <h2>🛒 Carrito (<span id="contadorCarrito">0</span>)</h2>
+      <ul id="itemsCarrito"></ul>
+      <p>Total: $<span id="totalCarrito">0.00</span></p>
+      <button id="vaciarCarrito" class="btn-comprar">Vaciar carrito</button>
+      <a href="pago.html" class="btn-comprar">Proceder al pago</a>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 Minimal Tees - Todos los derechos reservados
+  </footer>
+
+ <script>
+// ===============================
+// 🛒 Carrito centralizado (detalle)
+// ===============================
+let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+function guardarCarrito() {
+  localStorage.setItem('carrito', JSON.stringify(carrito));
+}
+
+function renderCarrito() {
+  const contenedor = document.getElementById('itemsCarrito');
+  const totalSpan = document.getElementById('totalCarrito');
+  const contadorSpan = document.getElementById('contadorCarrito');
+
+  if (!contenedor || !totalSpan) return;
+
+  contenedor.innerHTML = '';
+  let total = 0;
+  let totalItems = 0;
+
+  carrito.forEach((item, index) => {
+    const subtotal = item.precio * item.cantidad;
+    total += subtotal;
+    totalItems += item.cantidad;
+
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <span>${item.nombre} - $${item.precio.toFixed(2)}</span>
+      <span>
+        <input type="number" min="1" value="${item.cantidad}" style="width:50px; text-align:center;">
+        <button type="button" data-index="${index}">🗑</button>
+      </span>
+    `;
+    const input = li.querySelector('input');
+    input.addEventListener('change', (e) => {
+      const val = parseInt(e.target.value, 10);
+      if (val > 0) {
+        carrito[index].cantidad = val;
+        guardarCarrito();
+        renderCarrito();
+      } else {
+        e.target.value = carrito[index].cantidad;
+      }
+    });
+    const btnDel = li.querySelector('button');
+    btnDel.addEventListener('click', () => {
+      carrito.splice(index, 1);
+      guardarCarrito();
+      renderCarrito();
+    });
+
+    contenedor.appendChild(li);
+  });
+
+  totalSpan.textContent = total.toFixed(2);
+  if (contadorSpan) contadorSpan.textContent = totalItems;
+}
+
+function agregarAlCarrito(nombre, precio) {
+  const i = carrito.findIndex(p => p.nombre === nombre);
+  if (i >= 0) carrito[i].cantidad += 1;
+  else carrito.push({ nombre, precio, cantidad: 1 });
+  guardarCarrito();
+  renderCarrito();
+}
+
+function vaciarCarrito() {
+  carrito = [];
+  guardarCarrito();
+  renderCarrito();
+}
+
+// ===============================
+// 🚀 Inicialización en esta página
+// ===============================
+document.addEventListener('DOMContentLoaded', () => {
+  // 1) Render inicial del carrito (si está visible en esta página)
+  renderCarrito();
+
+  // 2) Botón Vaciar (si existe)
+  const vaciarBtn = document.getElementById('vaciarCarrito');
+  if (vaciarBtn) vaciarBtn.addEventListener('click', vaciarCarrito);
+
+  // 3) Enganchar el botón "Agregar al carrito" de esta página de detalle
+  //    Busca el bloque .producto (el de la camiseta) y toma nombre/precio desde ahí
+  const producto = document.querySelector('.producto');
+  const btnAgregar = producto?.querySelector('.btn-comprar');
+  const nombreEl = producto?.querySelector('h2');
+  const precioEl = producto?.querySelector('.precio');
+
+  if (btnAgregar && nombreEl && precioEl) {
+    btnAgregar.addEventListener('click', () => {
+      const nombre = nombreEl.textContent.trim();
+      const precio = parseFloat(precioEl.dataset.precio);
+      if (!isNaN(precio)) {
+        agregarAlCarrito(nombre, precio);
+      } else {
+        console.warn('Precio inválido: asegúrate de tener data-precio en .precio');
+      }
+    });
+  } else {
+    console.warn('No se encontró .producto, .btn-comprar, h2 o .precio con data-precio en esta página.');
+  }
+});
+</script>

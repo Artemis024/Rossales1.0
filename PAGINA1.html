@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda Minimalista</title>
+  <link rel="stylesheet" href="CSS/styles.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #121212;
+      color: #E0E0E0;
+    }
+    header {
+      background-color: #1E1E1E;
+      padding: 0.0rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      font-weight: 800;
+      font-size: 2.2rem;
+    }
+    nav a {
+      color: #E0E0E0;
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+    }
+    nav a:hover {
+      color: #FF4C29;
+    }
+    .filtros {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1rem;
+      background-color: #1E1E1E;
+    }
+    .filtros input, .filtros select {
+      padding: 0.5rem;
+      border: none;
+      border-radius: 4px;
+      font-family: inherit;
+    }
+    .productos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+    }
+    .producto {
+      background-color: #1E1E1E;
+      border-radius: 8px;
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+    .producto:hover {
+      transform: translateY(-5px);
+    }
+    .producto img {
+      width: 99%;
+      height: auto;
+    }
+    .producto h2 {
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+    }
+
+     }
+    .producto h3 {
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+    }
+
+
+    .precio {
+      color: #FF4C29;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .btn-comprar {
+      background-color: #FF4C29;
+      color: #fff;
+      border: none;
+      padding: 0.7rem 1.2rem;
+      margin-bottom: 1rem;
+      cursor: pointer;
+      font-weight: 500;
+      border-radius: 4px;
+      transition: background-color 0.2s ease;
+    }
+    .btn-comprar:hover {
+      background-color: #e04324;
+    }
+    .carrito {
+      background-color: #1E1E1E;
+      padding: 1rem;
+      margin: 1rem;
+      border-radius: 8px;
+    }
+    footer {
+      background-color: #1E1E1E;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ROSSALES Tees</h1>
+    <nav>
+      <a href="PAGINA1.html">Inicio</a>
+      <a href="#">Catálogo</a>
+      <a href="#">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- Buscador y filtros -->
+  <div class="filtros">
+  <div class="busqueda">
+    <input type="text" id="buscador" placeholder="🔍 Buscar producto...">
+  </div>
+  <div class="categoria">
+    <select id="filtroCategoria">
+      <option value="todos">Todas las categorías</option>
+      <option value="negra">Negra</option>
+      <option value="gris">Gris</option>
+    </select>
+  </div>
+</div>
+
+  <!-- Carrito compacto debajo del menú -->
+<div class="carrito-mini">
+  <h2>🛒 Carrito (<span id="contadorCarrito">0</span>)</h2>
+  <ul id="itemsCarrito"></ul>
+  <p>Total: $<span id="totalCarrito">0.00</span></p>
+  <div class="acciones-carrito">
+    <button id="vaciarCarrito" class="btn-comprar">Vaciar</button>
+    <a href="pagofinal.html" class="btn-comprar">Pagar</a>
+  </div>
+</div>
+
+  
+
+  <!-- Productos -->
+  <section class="productos" id="listaProductos">
+    <div class="producto" data-categoria="negra">
+  <a href="camiseta1.html">
+    <img src="img/camiseta1.jpg" alt="Camiseta Negra">
+  </a>
+  <h2>Camiseta Negra</h2>
+  <p class="precio" data-precio="25">$25.00</p>
+  <button class="btn-comprar">Agregar al carrito</button>
+</div>
+    <div class="producto" data-categoria="gris">
+      <a href="camiseta2.html">
+      <img src="img/camiseta2.jpg" alt="Camiseta Gris">
+    </a>
+      <h2>Camiseta Gris</h2>
+      <p class="precio" data-precio="15">$15.00</p>
+      <button class="btn-comprar">Agregar al carrito</button>
+    </div>
+    <!-- Más productos aquí -->
+    <div class="producto" data-categoria="gris">
+      <a href="camiseta3.html">
+      <img src="img/camiseta3.jpg" alt="Camiseta Blanca">
+    </a>
+      <h2>Camiseta Blanca</h2>
+      <p class="precio" data-precio="18">$18.00</p>
+      <button class="btn-comprar">Agregar al carrito</button>
+    </div>
+
+    <div class="producto" data-categoria="gris">
+      <a href="camiseta4.html">
+      <img src="img/camiseta4.jpg" alt="Camiseta Amarilla">
+    </a>
+      <h3>Camiseta Amarilla</h3>
+      <p class="precio" data-precio="25">$25.00</p>
+      <button class="btn-comprar">Agregar al carrito</button>
+    </div>
+
+  </section>
+
+
+
+
+  <footer>
+    © 2025 Minimal Tees - Todos los derechos reservados
+  </footer>
+
+  <script>
+    const buscador = document.getElementById('buscador');
+    const filtroCategoria = document.getElementById('filtroCategoria');
+    const productos = document.querySelectorAll('.producto');
+
+    // Filtrar por búsqueda
+    buscador.addEventListener('input', () => {
+      const texto = buscador.value.toLowerCase();
+      productos.forEach(prod => {
+        const nombre = prod.querySelector('h2').textContent.toLowerCase();
+        prod.style.display = nombre.includes(texto) ? '' : 'none';
+      });
+    });
+
+    // Filtrar por categoría
+    filtroCategoria.addEventListener('change', () => {
+      const categoria = filtroCategoria.value;
+      productos.forEach(prod => {
+        prod.style.display = (categoria === 'todos' || prod.dataset.categoria === categoria) ? '' : 'none';
+      });
+    });
+
+    // Agregar al carrito
+   
+  </script>
+
+ 
+
+  <script>
+// ===============================
+// 🛒 CARRITO CENTRALIZADO
+// ===============================
+
+// Cargar carrito desde localStorage o inicializar vacío
+let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+// Guardar carrito en localStorage
+function guardarCarrito() {
+  localStorage.setItem('carrito', JSON.stringify(carrito));
+}
+
+// Agregar producto al carrito
+function agregarAlCarrito(nombre, precio) {
+  // Buscar si ya existe
+  const index = carrito.findIndex(item => item.nombre === nombre);
+  if (index >= 0) {
+    carrito[index].cantidad += 1;
+  } else {
+    carrito.push({ nombre, precio, cantidad: 1 });
+  }
+  guardarCarrito();
+  renderCarrito();
+}
+
+// Eliminar producto del carrito
+function eliminarProducto(index) {
+  carrito.splice(index, 1);
+  guardarCarrito();
+  renderCarrito();
+}
+
+// Cambiar cantidad de un producto
+function cambiarCantidad(index, nuevaCantidad) {
+  if (nuevaCantidad > 0) {
+    carrito[index].cantidad = nuevaCantidad;
+    guardarCarrito();
+    renderCarrito();
+  }
+}
+
+// Renderizar carrito en cualquier página que tenga el contenedor
+function renderCarrito() {
+  const contenedor = document.getElementById('itemsCarrito');
+  const totalSpan = document.getElementById('totalCarrito');
+  const contadorSpan = document.getElementById('contadorCarrito');
+
+  if (!contenedor || !totalSpan) return; // Si la página no tiene carrito visible
+
+  contenedor.innerHTML = '';
+  let total = 0;
+  let totalItems = 0;
+
+  carrito.forEach((item, index) => {
+    const li = document.createElement('li');
+    const subtotal = item.precio * item.cantidad;
+    li.innerHTML = `
+      ${item.nombre} - $${item.precio.toFixed(2)} x 
+      <input type="number" min="1" value="${item.cantidad}" style="width:50px; text-align:center;">
+      = $${subtotal.toFixed(2)}
+      <button onclick="eliminarProducto(${index})">🗑</button>
+    `;
+    li.querySelector('input').addEventListener('change', (e) => {
+      cambiarCantidad(index, parseInt(e.target.value));
+    });
+    contenedor.appendChild(li);
+
+    total += subtotal;
+    totalItems += item.cantidad;
+  });
+
+  totalSpan.textContent = total.toFixed(2);
+  if (contadorSpan) contadorSpan.textContent = totalItems;
+}
+
+// Vaciar carrito
+function vaciarCarrito() {
+  carrito = [];
+  guardarCarrito();
+  renderCarrito();
+}
+
+// ===============================
+// 🚀 Inicialización
+// ===============================
+
+// Renderizar carrito al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+  renderCarrito();
+
+  // Botón de vaciar carrito si existe
+  const vaciarBtn = document.getElementById('vaciarCarrito');
+  if (vaciarBtn) {
+    vaciarBtn.addEventListener('click', vaciarCarrito);
+  }
+
+  // Botones "Agregar al carrito" si existen
+  document.querySelectorAll('.btn-comprar').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const producto = btn.closest('.producto');
+      if (producto) {
+        const nombre = producto.querySelector('h2').textContent;
+        const precio = parseFloat(producto.querySelector('.precio').dataset.precio);
+        agregarAlCarrito(nombre, precio);
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>

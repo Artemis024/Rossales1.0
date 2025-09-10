@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página de Pago - Minimal Tees</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #121212;
+      color: #E0E0E0;
+    }
+    header {
+      background-color: #1E1E1E;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      font-weight: 700;
+      font-size: 1.9rem;
+    }
+    nav a {
+      color: #E0E0E0;
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+    }
+    nav a:hover {
+      color: #FF4C29;
+    }
+    .filtros {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1rem;
+      background-color: #1E1E1E;
+    }
+    .filtros input, .filtros select {
+      padding: 0.5rem;
+      border: none;
+      border-radius: 4px;
+      font-family: inherit;
+    }
+    .productos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+    }
+    .producto {
+      background-color: #1E1E1E;
+      border-radius: 8px;
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+    .producto:hover {
+      transform: translateY(-5px);
+    }
+    .producto img {
+      width: 99%;
+      height: auto;
+    }
+    .producto h2 {
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+    }
+
+     }
+    .producto h3 {
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+    }
+
+
+    .precio {
+      color: #FF4C29;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .btn-comprar {
+      background-color: #FF4C29;
+      color: #fff;
+      border: none;
+      padding: 0.7rem 1.2rem;
+      margin-bottom: 1rem;
+      cursor: pointer;
+      font-weight: 500;
+      border-radius: 4px;
+      transition: background-color 0.2s ease;
+    }
+    .btn-comprar:hover {
+      background-color: #e04324;
+    }
+    .carrito {
+      background-color: #1E1E1E;
+      padding: 1rem;
+      margin: 1rem;
+      border-radius: 8px;
+    }
+    footer {
+      background-color: #1E1E1E;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #888;
+    }
+  </style>
+   <style>
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 2rem;
+    }
+    h2 {
+      color: #FF4C29;
+      margin-bottom: 1rem;
+    }
+    .resumen {
+      background-color: #1E1E1E;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1rem;
+    }
+    th, td {
+      padding: 0.8rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    th {
+      color: #FF4C29;
+    }
+    td button {
+      background: none;
+      border: none;
+      color: #FF4C29;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .formulario {
+      background-color: #1E1E1E;
+      padding: 1.5rem;
+      border-radius: 8px;
+    }
+    .formulario label {
+      display: block;
+      margin-top: 1rem;
+      margin-bottom: 0.3rem;
+      font-weight: 500;
+    }
+    .formulario input, .formulario select {
+      width: 100%;
+      padding: 0.7rem;
+      border: none;
+      border-radius: 6px;
+      background-color: #2A2A2A;
+      color: #E0E0E0;
+      font-family: 'Poppins', sans-serif;
+    }
+    .formulario input:focus, .formulario select:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px #FF4C29;
+    }
+    .btn-pagar {
+      background-color: #FF4C29;
+      color: #fff;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      margin-top: 1.5rem;
+      cursor: pointer;
+      font-weight: 500;
+      border-radius: 4px;
+      transition: background-color 0.2s ease;
+    }
+    .btn-pagar:hover {
+      background-color: #e04324;
+    }
+    .total {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Minimal Tees</h1>
+    <nav>
+      <a href="PAGINA1.html">Inicio</a>
+      <a href="#">Catálogo</a>
+      <a href="#">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Resumen de tu compra</h2>
+    <div class="resumen">
+      <table>
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Subtotal</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="tablaCarrito"></tbody>
+      </table>
+      <p class="total">Envío: $<span id="envio">5.00</span></p>
+      <p class="total">Total: $<span id="totalResumen">0.00</span></p>
+    </div>
+
+    <h2>Datos de envío y pago</h2>
+    <form class="formulario" id="formPago">
+      <label for="nombre">Nombre completo</label>
+      <input type="text" id="nombre" required>
+
+      <label for="direccion">Dirección</label>
+      <input type="text" id="direccion" required>
+
+      <label for="telefono">Teléfono</label>
+      <input type="tel" id="telefono" required>
+
+      <label for="metodoPago">Método de pago</label>
+      <select id="metodoPago" required>
+        <option value="">Selecciona una opción</option>
+        <option value="tarjeta">Tarjeta de crédito/débito</option>
+        <option value="paypal">PayPal</option>
+        <option value="transferencia">Transferencia bancaria</option>
+      </select>
+
+      <button type="submit" class="btn-pagar">Confirmar pago</button>
+    </form>
+  </main>
+
+  <footer>
+    © 2025 Minimal Tees - Todos los derechos reservados
+  </footer>
+
+  <script>
+    const tablaCarrito = document.getElementById('tablaCarrito');
+    const totalResumen = document.getElementById('totalResumen');
+    const envioSpan = document.getElementById('envio');
+    const formPago = document.getElementById('formPago');
+
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    const costoEnvio = 5.00;
+
+    function renderCarrito() {
+      tablaCarrito.innerHTML = '';
+      let total = 0;
+
+      carrito.forEach((item, index) => {
+        const subtotal = item.precio * item.cantidad;
+        total += subtotal;
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${item.nombre}</td>
+          <td>$${item.precio.toFixed(2)}</td>
+          <td>
+            <input type="number" min="1" value="${item.cantidad}" style="width:50px; text-align:center;">
+          </td>
+          <td>$${subtotal.toFixed(2)}</td>
+          <td><button onclick="eliminarProducto(${index})">🗑</button></td>
+        `;
+
+        // Evento para cambiar cantidad
+        tr.querySelector('input').addEventListener('change', (e) => {
+          const nuevaCantidad = parseInt(e.target.value);
+          if (nuevaCantidad > 0) {
+            carrito[index].cantidad = nuevaCantidad;
+            guardarCarrito();
+            renderCarrito();
+          }
+        });
+
+        tablaCarrito.appendChild(tr);
+      });
+
+      let totalConEnvio = total > 0 ? total + costoEnvio : 0;
+      envioSpan.textContent = total > 0 ? costoEnvio.toFixed(2) : '0.00';
+      totalResumen.textContent = totalConEnvio.toFixed(2);
+    }
+
+    function eliminarProducto(index) {
+      carrito.splice(index, 1);
+      guardarCarrito();
+      renderCarrito();
+    }
+
+    function guardarCarrito() {
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+    }
+
+    formPago.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (carrito.length === 0) {
+        alert('Tu carrito está vacío.');
+        return;
+      }
+      alert('✅ ¡Gracias por tu compra! Tu pedido está en proceso.');
+      localStorage.removeItem('carrito');
+      window.location.href = 'index.html';
+    });
+
+    renderCarrito();
+  </script>
+</body>
+</html>
