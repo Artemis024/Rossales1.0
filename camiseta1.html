@@ -284,7 +284,7 @@
       <ul id="itemsCarrito"></ul>
       <p>Total: $<span id="totalCarrito">0.00</span></p>
       <button id="vaciarCarrito" class="btn-comprar">Vaciar carrito</button>
-      <a href="pago.html" class="btn-comprar">Proceder al pago</a>
+      <a href="pagofinal.html" class="btn-comprar">Proceder al pago</a>
     </div>
   </main>
 
@@ -294,16 +294,6 @@
 
 
  <script>
-  
-buscador.addEventListener('keypress', (e) => {
-  if (e.key === 'Enter') {
-    e.preventDefault();
-    const query = buscador.value.trim();
-    if (query) {
-      window.location.href = `PAGINA1.html?buscar=${encodeURIComponent(query)}`;
-    }
-  }
-});
 
 // ===============================
 // 🛒 Carrito centralizado (detalle)
