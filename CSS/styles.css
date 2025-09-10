@@ -195,21 +195,3 @@ nav a.active::after {
   color: #fff;
 }
 
-
-/* Estilos para móviles */
-
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-@media (max-width: 768px) {
-  nav {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  .detalle-producto {
-    grid-template-columns: 1fr;
-  }
-}
-

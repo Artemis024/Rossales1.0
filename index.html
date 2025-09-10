@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tienda Minimalista</title>
   <link rel="stylesheet" href="CSS/styles.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body {
       margin: 0;
@@ -110,6 +110,35 @@
       font-size: 0.9rem;
       color: #888;
     }
+
+        /* ====== MEDIA QUERIES ====== */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      nav a {
+        font-size: 1.1rem;
+      }
+      header h1 {
+        font-size: 1.3rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .productos {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+      }
+      .producto h3 {
+        font-size: 1rem;
+      }
+      .producto p {
+        font-size: 0.9rem;
+      }
+    }
+
+
+    
   </style>
 </head>
 <body>
